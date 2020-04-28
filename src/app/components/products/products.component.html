@@ -1,0 +1,48 @@
+<div class="container">
+  <h1 class="text-center">Products Page</h1>
+  <div class="form-group">
+    <label for="designation">Designation</label>
+    <input type="text" class="form-control " id="designation"
+    required maxlength="20" minlength="5" pattern="^([a-zA-Z0-9]* [a-zA-Z0-9]*)*[^\s]$"
+    ngModel name="designation" #designation="ngModel"
+    [ngClass]="{'is-valid' : designation.valid && !designation.hasError('pattern'),
+                  'is-invalid': designation.hasError('required')||designation.hasError('pattern') }" >
+    <div *ngIf="designation.valid && !designation.hasError('pattern')"
+    class="valid-feedback">
+      Looks good!
+    </div>
+    <div *ngIf="designation.hasError('required')"
+    class="invalid-feedback">
+      Required
+    </div>
+    <div *ngIf="designation.hasError('pattern')"
+    class="invalid-feedback">
+      MinLength:20,Must contain Space
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control " id="price"
+    required pattern="^[0-9]+(\.[0-9][0-9]?)?$"
+    ngModel name="price" #price="ngModel"
+    [ngClass]="{'is-valid' : price.valid && !price.hasError('pattern'),
+                  'is-invalid': price.hasError('required') ||price.hasError('pattern') }" >
+    <div *ngIf="price.valid && !price.hasError('pattern')"
+    class="valid-feedback">
+      Looks good!
+    </div>
+    <div *ngIf="price.hasError('required')"
+    class="invalid-feedback">
+      Required
+    </div>
+    <div *ngIf="price.hasError('pattern')"
+    class="invalid-feedback">
+      Pattern invalid
+    </div>
+  </div>
+
+  <button class="btn btn-primary btn-block" [disabled]="price.hasError('pattern') ||price.hasError('required')
+  ||designation.hasError('pattern') ||designation.hasError('required')">Submit</button>
+</div>
