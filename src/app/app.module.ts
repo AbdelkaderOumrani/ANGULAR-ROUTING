@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { MyBarChartComponent } from './components/my-bar-chart/my-bar-chart.component';
 
 
 @NgModule({
@@ -18,12 +20,14 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ProductsComponent,
     ContactComponent,
+    MyBarChartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
